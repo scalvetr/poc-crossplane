@@ -1,0 +1,10 @@
+apiVersion: objects.poc.crossplane.io/v1alpha1
+kind: Topic
+metadata:
+  name: topic1
+spec:
+  forProvider:
+    name: topic1
+    partitions: 5
+  providerConfigRef:
+    name: tenant1

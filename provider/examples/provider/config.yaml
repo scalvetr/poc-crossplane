@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: crossplane-system
+  name: example-provider-secret
+type: Opaque
+data:
+  credentials: "c3VwZXItc2VjcmV0LXBhc3N3b3Jk"
+---
+apiVersion: poc.crossplane.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: tenant1
+spec:
+  api_url: "http://localhost:8080"
+  tenant: "tenant1"
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: example-provider-secret
+      key: credentials
