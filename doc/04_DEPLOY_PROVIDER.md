@@ -35,8 +35,7 @@ metadata:
 
 spec:
   controller:
-    image: localhost:5001/localhost:5001/poc-crossplane-provider-controller:0.1
-
+    image: localhost:5001/poc-crossplane-provider-controller:0.1
 EOF
 
 kubectl crossplane build provider
