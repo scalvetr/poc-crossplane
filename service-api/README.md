@@ -14,18 +14,18 @@ http://localhost:8080/actuator/swagger-ui.html
 
 ## Deploy lo local registry
 ```shell
-./gradlew bootBuildImage --imageName=localhost:5001/sample-app:0.1
+./gradlew bootBuildImage --imageName=localhost:5001/service-api:0.1
 # test
-docker run -p 8080:8080 localhost:5001/sample-app:0.1
-docker push localhost:5001/sample-app:0.1
+docker run -p 8080:8080 localhost:5001/service-api:0.1
+docker push localhost:5001/service-api:0.1
 ```
 
 
 ## Test Helm Chart
 ```shell
-helm uninstall sample-app
+helm uninstall service-api
 
-helm install sample-app sample-app-helm \
+helm install service-api service-api-helm \
 --set image.pullPolicy=Always \
---values sample-app-helm/values.yaml
+--values service-api-helm/values.yaml
 ```
