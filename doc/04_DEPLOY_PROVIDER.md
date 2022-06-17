@@ -3,7 +3,7 @@
 ## build images & push
 
 ```shell
-cd crossplane-provider
+cd provider
 make
 
 docker tag build-f77e8e61/provider-poc-controller-amd64 localhost:5001/provider-poc-controller:0.1
@@ -21,4 +21,30 @@ kubectl apply -f package/crds/*.yaml
 ```shell
 kubectl apply -f examples/provider/*
 kubectl apply -f examples/sample/*
+```
+
+
+Useful commands
+```shell
+# generate crds
+make generate
+
+# test
+make test
+
+# build the image
+make build
+make build.all
+
+docker tag build-f77e8e61/provider-poc-controller-amd64 localhost:5001/provider-poc-controller:0.1
+
+cd package
+# build the xpkg file
+kubectl crossplane build provider
+
+# build the xpkg file
+kubectl crossplane push provider localhost:5001/provider-poc-controller:0.1
+
+cd ..
+# deploy examples
 ```

@@ -23,29 +23,3 @@ guide may also be of use.
 
 [CONTRIBUTING.md]: https://github.com/crossplane/crossplane/blob/master/CONTRIBUTING.md
 [provider-dev]: https://github.com/crossplane/crossplane/blob/master/docs/contributing/provider_development_guide.md
-
-
-Useful commands
-```shell
-# generate crds
-make generate
-
-# test
-make test
-
-# build the image
-make build
-make build.all
-
-docker tag build-f77e8e61/provider-poc-controller-amd64 localhost:5001/provider-poc-controller:0.1
-
-cd package
-# build the xpkg file
-kubectl crossplane build provider
-
-# build the xpkg file
-kubectl crossplane push provider localhost:5001/provider-poc-controller:0.1
-
-cd ..
-# deploy examples
-```
