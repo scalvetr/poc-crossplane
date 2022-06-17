@@ -3,11 +3,13 @@
 ## build images & push
 
 ```shell
-cd provider
+
+git clone git@github.com:scalvetr/poc-crossplane-provider.git
+cd poc-crossplane-provider
 make
 
-docker tag build-f77e8e61/provider-poc-controller-amd64 localhost:5001/provider-poc-controller:0.1
-docker push localhost:5001/provider-poc-controller:0.1
+docker tag build-f77e8e61/poc-crossplane-provider-controller-amd64 localhost:5001/poc-crossplane-provider-controller:0.1
+docker push localhost:5001/poc-crossplane-provider-controller:0.1
 
 
 ## Install controller & CRD
@@ -36,14 +38,14 @@ make test
 make build
 make build.all
 
-docker tag build-f77e8e61/provider-poc-controller-amd64 localhost:5001/provider-poc-controller:0.1
+docker tag build-f77e8e61/poc-crossplane-provider-controller-amd64 localhost:5001/poc-crossplane-provider-controller:0.1
 
 cd package
 # build the xpkg file
 kubectl crossplane build provider
 
 # build the xpkg file
-kubectl crossplane push provider localhost:5001/provider-poc-controller:0.1
+kubectl crossplane push provider localhost:5001/poc-crossplane-provider-controller:0.1
 
 cd ..
 # deploy examples
