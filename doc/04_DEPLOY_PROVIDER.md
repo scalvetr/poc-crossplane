@@ -7,11 +7,11 @@ git clone git@github.com:scalvetr/poc-crossplane-provider.git
 cd poc-crossplane-provider
 make
 
-docker tag build-876b9d7c/poc-crossplane-provider-amd64 localhost:5001/poc-crossplane-provider:0.1
-docker tag build-876b9d7c/poc-crossplane-provider-controller-amd64 localhost:5001/poc-crossplane-provider-controller:0.1
+docker tag build-e2c376fb/poc-crossplane-provider-amd64 localhost:5001/poc-crossplane-provider:0.1
+docker tag build-e2c376fb/poc-crossplane-provider-controller-amd64 localhost:5001/poc-crossplane-provider-controller:0.1
 
+docker push localhost:5001/poc-crossplane-provider:0.1
 docker push localhost:5001/poc-crossplane-provider-controller:0.1
-docker push localhost:5001/localhost:5001/poc-crossplane-provider-controller:0.1
 
 ```
 
@@ -42,6 +42,7 @@ EOF
 kubectl crossplane build provider
 
 kubectl crossplane push provider localhost:5001/poc-crossplane-provider-controller:0.1
+kubectl crossplane install provider localhost:5001/poc-crossplane-provider-controller:0.1
 mv ../crossplane.yaml.bkp crossplane.yaml
 cd ..
 
