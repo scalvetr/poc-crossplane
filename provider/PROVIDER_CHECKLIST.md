@@ -43,17 +43,17 @@ Most Crossplane providers include the following files:
   [provider-gcp/README.md](https://github.com/crossplane/provider-gcp/blob/master/README.md)
   as an example)
 - [ ]  Code is licensed under the [Apache 2.0
-  License](https://github.com/scalvetr/provider-poc/blob/main/LICENSE)
+  License](https://github.com/scalvetr/poc-crossplane/provider/blob/main/LICENSE)
 - [ ]  Include a “Developer Certificate of Origin”. Example:
   [DCO](https://github.com/upbound/build/blob/master/DCO)
 - [ ]  Include the CNCF [Code of
   Conduct](https://github.com/crossplane/crossplane/blob/master/CODE_OF_CONDUCT.md)
 - [ ]  Update
-  [OWNERS.md](https://github.com/scalvetr/provider-poc/blob/main/OWNERS.md)
+  [OWNERS.md](https://github.com/scalvetr/poc-crossplane/provider/blob/main/OWNERS.md)
   with contacts for project Owners
 - [ ]  Ensure `hack/boilerplate.go.txt` (used in Code generation) includes
   Crossplane Authors, Apache license and any other Copyright statements:
-  [https://github.com/scalvetr/provider-poc/blob/main/hack/boilerplate.go.txt](https://github.com/scalvetr/provider-poc/blob/main/hack/boilerplate.go.txt)
+  [https://github.com/scalvetr/poc-crossplane/provider/blob/main/hack/boilerplate.go.txt](https://github.com/scalvetr/poc-crossplane/provider/blob/main/hack/boilerplate.go.txt)
 - [ ] Include Documentation on how to:
   - [ ] Install Provider
   - [ ] Contribute to Development
@@ -81,7 +81,7 @@ repository contains most of these settings.
 - [ ] Create a [Crossplane
   Package](https://crossplane.io/docs/master/concepts/packages.html)
   configuration (see
-  [package/crossplane.yaml)](https://github.com/scalvetr/provider-poc/blob/main/package/crossplane.yaml)
+  [package/crossplane.yaml)](https://github.com/scalvetr/poc-crossplane/provider/blob/main/package/crossplane.yaml)
 
 ## Deployment of Artifacts
 
@@ -96,7 +96,7 @@ the publish and promotion workflows.
 In general, providers should:
 
 - [ ] Utilize GitHub workflows from
-  <https://github.com/scalvetr/provider-poc/tree/main/.github/workflows>
+  <https://github.com/scalvetr/poc-crossplane/provider/tree/main/.github/workflows>
 - [ ] Create OCI image repos to push Package and Controller images.
 - [ ] Automatically push Provider images and packages via CI
 - [ ] Add GitHub Secrets to push to Docker repository. (To be performed by
@@ -113,6 +113,6 @@ to grant your project access to the GitHub org scoped secrets.
 - [ ] Follow recommendations at
   [https://github.com/crossplane/crossplane/blob/master/GOVERNANCE.md#repository-governance](https://github.com/crossplane/crossplane/blob/master/GOVERNANCE.md#repository-governance)
 - [ ] Enable Issues on your project and configure Issue templates (examples at:
-  [.github/ISSUE_TEMPLATE](https://github.com/scalvetr/provider-poc/tree/master/.github/ISSUE_TEMPLATE))
+  [.github/ISSUE_TEMPLATE](https://github.com/scalvetr/poc-crossplane/provider/tree/master/.github/ISSUE_TEMPLATE))
 - [ ] Create Pull Request Templates: (example:
-  [PULL_REQUEST_TEMPLATE.md](https://github.com/scalvetr/provider-poc/blob/master/.github/PULL_REQUEST_TEMPLATE.md))
+  [PULL_REQUEST_TEMPLATE.md](https://github.com/scalvetr/poc-crossplane/provider/blob/master/.github/PULL_REQUEST_TEMPLATE.md))

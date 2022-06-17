@@ -19,8 +19,8 @@ package topic
 import (
 	"context"
 	"fmt"
-	poc2 "github.com/scalvetr/provider-poc/poc-client/pkg/poc"
-	"github.com/scalvetr/provider-poc/internal/client/poc"
+	"github.com/scalvetr/poc-crossplane/provider/internal/client/poc"
+	poc2 "github.com/scalvetr/poc-crossplane/service-client/pkg/poc"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
 	"github.com/pkg/errors"
@@ -34,9 +34,9 @@ import (
 	"github.com/crossplane/crossplane-runtime/pkg/reconciler/managed"
 	"github.com/crossplane/crossplane-runtime/pkg/resource"
 
-	"github.com/scalvetr/provider-poc/apis/objects/v1alpha1"
-	apisv1alpha1 "github.com/scalvetr/provider-poc/apis/v1alpha1"
-	"github.com/scalvetr/provider-poc/internal/controller/features"
+	"github.com/scalvetr/poc-crossplane/provider/apis/objects/v1alpha1"
+	apisv1alpha1 "github.com/scalvetr/poc-crossplane/provider/apis/v1alpha1"
+	"github.com/scalvetr/poc-crossplane/provider/internal/controller/features"
 )
 
 const (

@@ -20,8 +20,8 @@ import (
 	"github.com/crossplane/crossplane-runtime/pkg/controller"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	"github.com/scalvetr/provider-poc/internal/controller/config"
-	"github.com/scalvetr/provider-poc/internal/controller/topic"
+	"github.com/scalvetr/poc-crossplane/provider/internal/controller/config"
+	"github.com/scalvetr/poc-crossplane/provider/internal/controller/topic"
 )
 
 // Setup creates all Template controllers with the supplied logger and adds them to

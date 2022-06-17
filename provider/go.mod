@@ -1,4 +1,4 @@
-module github.com/scalvetr/poc-crossplane/crossplane-provider/
+module github.com/scalvetr/poc-crossplane/provider
 
 go 1.17
 
@@ -7,7 +7,7 @@ require (
 	github.com/crossplane/crossplane-tools v0.0.0-20220310165030-1f43fc12793e
 	github.com/google/go-cmp v0.5.6
 	github.com/pkg/errors v0.9.1
-	github.com/scalvetr/provider-poc/poc-client v0.0.0
+	github.com/scalvetr/poc-crossplane/service-client v0.0.0
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 	k8s.io/apimachinery v0.23.0
 	k8s.io/client-go v0.23.0
@@ -114,4 +114,4 @@ require (
 
 )
 
-replace github.com/scalvetr/provider-poc/service-client v0.0.0 => ../service-client
+replace github.com/scalvetr/poc-crossplane/service-client v0.0.0 => ../service-client

@@ -20,8 +20,8 @@ import (
 	"context"
 	"github.com/crossplane/crossplane-runtime/pkg/test"
 	"github.com/google/go-cmp/cmp"
-	"github.com/scalvetr/provider-poc/apis/objects/v1alpha1"
-	"github.com/scalvetr/provider-poc/internal/client/poc"
+	"github.com/scalvetr/poc-crossplane/provider/apis/objects/v1alpha1"
+	"github.com/scalvetr/poc-crossplane/provider/internal/client/poc"
 	"testing"
 
 	"github.com/crossplane/crossplane-runtime/pkg/reconciler/managed"

@@ -20,8 +20,8 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	objectsv1alpha1 "github.com/scalvetr/provider-poc/apis/objects/v1alpha1"
-	pocv1alpha1 "github.com/scalvetr/provider-poc/apis/v1alpha1"
+	objectsv1alpha1 "github.com/scalvetr/poc-crossplane/provider/apis/objects/v1alpha1"
+	pocv1alpha1 "github.com/scalvetr/poc-crossplane/provider/apis/v1alpha1"
 )
 
 func init() {

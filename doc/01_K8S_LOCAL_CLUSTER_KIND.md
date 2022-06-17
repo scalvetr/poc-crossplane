@@ -59,6 +59,7 @@ fi
 
 # Install ingress
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+
 # and wait
 kubectl wait --namespace ingress-nginx \
   --for=condition=ready pod \

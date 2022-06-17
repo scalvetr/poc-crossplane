@@ -15,11 +15,19 @@ docker run -p 8080:8080 localhost:5001/service-api:0.1
 
 ## Install service to the Kubernetes cluster
 
-Init variables
+Init the namespace
 ```shell
 export TARGET_NAMESPACE="service-api"
+
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${TARGET_NAMESPACE}
+EOF
 ```
 
+Install the service
 ```shell
-helm install servie-api servie-api-helm --values servie-api-helm/values.yaml
+helm install service-api service-api-helm --values service-api-helm/values.yaml
 ```

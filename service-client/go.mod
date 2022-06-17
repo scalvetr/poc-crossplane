@@ -1,4 +1,4 @@
-module github.com/scalvetr/provider-poc/service-client
+module github.com/scalvetr/poc-crossplane/service-client
 
 go 1.17
 

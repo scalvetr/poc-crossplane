@@ -1,7 +1,7 @@
 package poc
 
 import (
-	"github.com/scalvetr/provider-poc/service-client/pkg/poc"
+	"github.com/scalvetr/poc-crossplane/service-client/pkg/poc"
 	"net/http"
 )
 

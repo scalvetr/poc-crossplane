@@ -36,10 +36,10 @@ import (
 	"github.com/crossplane/crossplane-runtime/pkg/ratelimiter"
 	"github.com/crossplane/crossplane-runtime/pkg/resource"
 
-	"github.com/scalvetr/provider-poc/apis"
-	"github.com/scalvetr/provider-poc/apis/v1alpha1"
-	template "github.com/scalvetr/provider-poc/internal/controller"
-	"github.com/scalvetr/provider-poc/internal/controller/features"
+	"github.com/scalvetr/poc-crossplane/provider/apis"
+	"github.com/scalvetr/poc-crossplane/provider/apis/v1alpha1"
+	template "github.com/scalvetr/poc-crossplane/provider/internal/controller"
+	"github.com/scalvetr/poc-crossplane/provider/internal/controller/features"
 )
 
 func main() {
