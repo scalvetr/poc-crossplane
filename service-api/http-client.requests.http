@@ -1,0 +1,86 @@
+GET {{base-url}}/v1/topics
+Accept: application/json
+x-tenant: invalid_tenant
+
+> {%
+    client.test("Request executed with client error", function() {
+        client.assert(response.status === 422, "Response status is not 422 (" + response.status + ")");
+    });
+    client.test("Request body is correct", function() {
+        client.assert(response.body.error === "Invalid tenant invalid_tenant", "Response body is not \"Invalid tenant invalid_tenant\"");
+    });
+    client.test("Response content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+%}
+
+###
+POST {{base-url}}/v1/topics
+Content-Type: application/json
+x-tenant: tenant1
+
+{
+  "name": "topic1",
+  "partitions": 11,
+  "status": "CREATED"
+}
+
+> {%
+    client.test("Request executed with client error", function() {
+        client.assert(response.status === 422, "Response status is not 422 (" + response.status + ")");
+    });
+    client.test("Request body is correct", function() {
+        client.assert(response.body.error === "Invalid number of partitions 11, cannot exceed 10", "Response body is not \"Invalid number of partitions 11, cannot exceed 10\"");
+    });
+    client.test("Response content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+%}
+
+###
+POST {{base-url}}/v1/topics
+Content-Type: application/json
+x-tenant: tenant1
+
+{
+  "name": "topic1",
+  "partitions": 4,
+  "status": "CREATED"
+}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 201, "Response status is not 201 (" + response.status + ")");
+    });
+%}
+
+###
+GET {{base-url}}/v1/topics/topic1
+Accept: application/json
+x-tenant: tenant1
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200 (" + response.status + ")");
+    });
+    client.test("Request body is correct", function() {
+        client.assert(response.body.name === "topic1", "Response body name not \"topic1\"");
+    });
+    client.test("Response content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+%}
+
+
+###
+DELETE {{base-url}}/v1/topics/topic1
+x-tenant: tenant1
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 204, "Response status is not 204 (" + response.status + ")");
+    });
+%}
