@@ -29,7 +29,7 @@ kubectl -n ${TARGET_NAMESPACE} get pods
 #service-api-6ddcc85df6-m6n5h   1/1     Running   0          25s
 
 # test
-curl http://service-api.localtest.me/actuator/info
+curl -k https://service-api.localtest.me/actuator/health
 
 echo "open https://service-api.localtest.me/actuator/swagger-ui.html"
 ```
