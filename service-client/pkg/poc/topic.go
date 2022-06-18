@@ -77,7 +77,7 @@ func (c *Client) GetTopic(topicName string) (*Topic, error) {
 	if err != nil {
 		return nil, err
 	}
-	if res.StatusCode != 404 {
+	if res.StatusCode == 404 {
 		return nil, &TopicNotFoundError{
 			TopicName: topicName,
 			Msg:       fmt.Sprintf("Topic %s not found", topicName),
@@ -142,7 +142,7 @@ func (c *Client) UpdateTopic(t Topic) error {
 	if err != nil {
 		return err
 	}
-	if res.StatusCode != 404 {
+	if res.StatusCode == 404 {
 		return &TopicNotFoundError{
 			TopicName: t.Name,
 			Msg:       fmt.Sprintf("Topic %s not found", t.Name),
@@ -167,7 +167,7 @@ func (c *Client) DeleteTopic(topicName string) error {
 	if err != nil {
 		return err
 	}
-	if res.StatusCode != 404 {
+	if res.StatusCode == 404 {
 		return &TopicNotFoundError{
 			TopicName: topicName,
 			Msg:       fmt.Sprintf("Topic %s not found", topicName),
