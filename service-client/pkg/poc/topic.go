@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"log"
 )
@@ -18,6 +19,15 @@ type Error struct {
 	Error   string `json:"error"`
 	Message string `json:"message"`
 	Status  int    `json:"status"`
+}
+
+type TopicNotFoundError struct {
+	TopicName string
+	Msg       string
+}
+
+func (e *TopicNotFoundError) Error() string {
+	return e.Msg
 }
 
 func (c *Client) GetTopics() ([]Topic, error) {
@@ -67,7 +77,12 @@ func (c *Client) GetTopic(topicName string) (*Topic, error) {
 	if err != nil {
 		return nil, err
 	}
-	if res.StatusCode != 200 {
+	if res.StatusCode != 404 {
+		return nil, &TopicNotFoundError{
+			TopicName: topicName,
+			Msg:       fmt.Sprintf("Topic %s not found", topicName),
+		}
+	} else if res.StatusCode != 200 {
 		var data_obj Error
 		var errorBody []byte
 		res.Body.Read(errorBody)
@@ -127,7 +142,12 @@ func (c *Client) UpdateTopic(t Topic) error {
 	if err != nil {
 		return err
 	}
-	if res.StatusCode != 204 {
+	if res.StatusCode != 404 {
+		return &TopicNotFoundError{
+			TopicName: t.Name,
+			Msg:       fmt.Sprintf("Topic %s not found", t.Name),
+		}
+	} else if res.StatusCode != 204 {
 		var data_obj Error
 		var errorBody []byte
 		res.Body.Read(errorBody)
@@ -147,7 +167,12 @@ func (c *Client) DeleteTopic(topicName string) error {
 	if err != nil {
 		return err
 	}
-	if res.StatusCode != 204 {
+	if res.StatusCode != 404 {
+		return &TopicNotFoundError{
+			TopicName: topicName,
+			Msg:       fmt.Sprintf("Topic %s not found", topicName),
+		}
+	} else if res.StatusCode != 204 {
 		var data_obj Error
 		var errorBody []byte
 		res.Body.Read(errorBody)
