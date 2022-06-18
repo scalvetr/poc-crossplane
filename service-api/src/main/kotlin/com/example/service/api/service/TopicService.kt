@@ -1,6 +1,7 @@
 package com.example.service.api.service
 
 import com.example.service.api.Topic
+import com.example.service.api.TopicStatus
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.springframework.stereotype.Service
@@ -17,7 +18,7 @@ class TopicService(
         checkTenant(tenant)
         checkTopic(topic)
         checkTopicLimit(tenant)
-        database[tenant]?.put(topic.name, topic)
+        database[tenant]?.put(topic.name, Topic(topic.name, topic.partitions, TopicStatus.CREATED))
     }
 
     suspend fun updateTopic(tenant: String, topic: Topic) {
