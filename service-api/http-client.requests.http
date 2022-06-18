@@ -1,4 +1,4 @@
-GET {{base-url}}/v1/topics
+GET {{base-url}}/topics
 Accept: application/json
 x-tenant: invalid_tenant
 
@@ -16,14 +16,13 @@ x-tenant: invalid_tenant
 %}
 
 ###
-POST {{base-url}}/v1/topics
+POST {{base-url}}/topics
 Content-Type: application/json
 x-tenant: tenant1
 
 {
   "name": "topic1",
-  "partitions": 11,
-  "status": "CREATED"
+  "partitions": 11
 }
 
 > {%
@@ -40,7 +39,7 @@ x-tenant: tenant1
 %}
 
 ###
-POST {{base-url}}/v1/topics
+POST {{base-url}}/topics
 Content-Type: application/json
 x-tenant: tenant1
 
@@ -57,7 +56,7 @@ x-tenant: tenant1
 %}
 
 ###
-GET {{base-url}}/v1/topics/topic1
+GET {{base-url}}/topics/topic1
 Accept: application/json
 x-tenant: tenant1
 
@@ -76,7 +75,7 @@ x-tenant: tenant1
 
 
 ###
-DELETE {{base-url}}/v1/topics/topic1
+DELETE {{base-url}}/topics/topic1
 x-tenant: tenant1
 
 > {%
