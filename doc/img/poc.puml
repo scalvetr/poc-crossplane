@@ -1,0 +1,48 @@
+@startuml kubernetes
+
+footer POC deployment diagram
+scale max 1024 width
+
+skinparam nodesep 10
+skinparam ranksep 10
+
+' Kubernetes
+!define KubernetesPuml https://raw.githubusercontent.com/dcasati/kubernetes-PlantUML/master/dist
+
+!includeurl KubernetesPuml/kubernetes_Common.puml
+!includeurl KubernetesPuml/kubernetes_Context.puml
+!includeurl KubernetesPuml/kubernetes_Simplified.puml
+
+!includeurl KubernetesPuml/OSS/KubernetesSvc.puml
+!includeurl KubernetesPuml/OSS/KubernetesIng.puml
+!includeurl KubernetesPuml/OSS/KubernetesPod.puml
+!includeurl KubernetesPuml/OSS/KubernetesCrd.puml
+
+left to right direction
+
+actor "User" as userAlias
+
+' Kubernetes Components
+Cluster_Boundary(cluster, "Kubernetes Cluster") {
+    Namespace_Boundary(ns_service-api, "service-api") {
+        KubernetesIng(service_api_gateway, "service-api.localtest.me", "")
+        KubernetesSvc(service_api, "service-api", "")
+        KubernetesPod(service_api_pod, "service-api-pod1", "")
+    }
+    Namespace_Boundary(ns_crossplane, "crossplane-system") {
+        KubernetesPod(pod_crossplane, "crossplane", "")
+        KubernetesPod(pod_crossplane_rbac_manager, "crossplane-rbac-manager", "")
+        KubernetesPod(pod_poc_crossplane_provider, "poc-crossplane-provider", "")
+    }
+    Namespace_Boundary(ns_controller, "controller") {
+        KubernetesCrd(poc_crossplane_provider, "poc-crossplane-provider", "")
+    }
+}
+
+Rel(userAlias,service_api_gateway,"checks the current state", "1")
+Rel(service_api_gateway,service_api,"ingress to\nservice", "2")
+Rel(service_api,service_api_pod,"load Balances to Pods", "3")
+Rel(userAlias,poc_crossplane_provider,"describes the desired state", "4")
+Rel(poc_crossplane_provider,pod_poc_crossplane_provider,"configures the provider pod", "5")
+Rel(pod_poc_crossplane_provider,service_api,"synchronizes with the external service", "6")
+@enduml
