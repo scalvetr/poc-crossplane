@@ -1,0 +1,3 @@
+[submodule "poc-crossplane-provider"]
+	path = poc-crossplane-provider
+	url = git@github.com:scalvetr/poc-crossplane-provider.git
