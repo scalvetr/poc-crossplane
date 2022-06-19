@@ -45,8 +45,7 @@ x-tenant: tenant1
 
 {
   "name": "topic1",
-  "partitions": 4,
-  "status": "CREATED"
+  "partitions": 4
 }
 
 > {%

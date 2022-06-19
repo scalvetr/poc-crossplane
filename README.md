@@ -67,6 +67,9 @@ spec:
       name: example-provider-secret
       key: credentials
 EOF
+
+# check the TENANT & API_URL
+kubectl get providerconfigs.poc.crossplane.io
 ```
 
 Once configured one tenant, we can start creating topics
@@ -79,13 +82,16 @@ metadata:
 spec:
   forProvider:
     name: topic1
-    partitions: 4
+    partitions: 5
   providerConfigRef:
     name: tenant1
 EOF
 
+# check the TOPIC_NAME, PARTITIONS & STATUS
+kubectl get topics.objects.poc.crossplane.io
+
 curl -k --header "x-tenant: tenant1" https://service-api.localtest.me/v1/topics
-# [{"name":"topic1","partitions":5,"status":null}]
+# [{"name":"topic1","partitions":5,"status":"CREATED"}]
 ```
 It can also be modified
 ```shell
@@ -104,7 +110,7 @@ EOF
 # topic.objects.poc.crossplane.io/topic1 configured
 
 curl -k --header "x-tenant: tenant1" https://service-api.localtest.me/v1/topics/topic1
-# {"name":"topic1","partitions":4,"status":null}
+# {"name":"topic1","partitions":4,"status":"CREATED"}
 ```
 
 Other useful commands
