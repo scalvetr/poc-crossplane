@@ -1,4 +1,4 @@
-# Deploy the Service API in ArgoCD
+# Deploy the Service API
 
 
 ## Deploy service to local registry
