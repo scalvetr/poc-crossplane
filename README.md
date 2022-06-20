@@ -91,7 +91,7 @@ EOF
 kubectl get topics.objects.poc.crossplane.io
 
 curl -k --header "x-tenant: tenant1" https://service-api.localtest.me/v1/topics
-# [{"name":"topic1","partitions":5,"status":"CREATED"}]
+# [{"name":"topic1","partitions":5,"creationTime":"2022-06-20T23:18:29.067069508Z"}]
 ```
 It can also be modified
 ```shell
@@ -110,7 +110,7 @@ EOF
 # topic.objects.poc.crossplane.io/topic1 configured
 
 curl -k --header "x-tenant: tenant1" https://service-api.localtest.me/v1/topics/topic1
-# {"name":"topic1","partitions":4,"status":"CREATED"}
+# {"name":"topic1","partitions":4,"creationTime":"2022-06-20T23:18:29.067069508Z"}
 ```
 
 Other useful commands

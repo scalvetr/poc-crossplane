@@ -19,7 +19,7 @@ make build publish
 ## Install the provider to the K8s cluster
 
 ```shell
-# kubectl crossplane install provider scalvetr/poc-crossplane-provider:v0.0.0-16.g8498e0e
+# kubectl crossplane install provider scalvetr/poc-crossplane-provider:v0.0.0-19.g65de851
 
 cat <<EOF | kubectl create -f -
 apiVersion: pkg.crossplane.io/v1
@@ -27,7 +27,7 @@ kind: Provider
 metadata:
   name: poc-crossplane-provider
 spec:
-  package: "scalvetr/poc-crossplane-provider:v0.0.0-16.g8498e0e"
+  package: "scalvetr/poc-crossplane-provider:v0.0.0-19.g65de851"
 EOF
 
 kubectl get crossplane

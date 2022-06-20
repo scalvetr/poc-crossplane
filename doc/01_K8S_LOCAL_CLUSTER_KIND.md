@@ -13,7 +13,7 @@ brew install kind
 brew install kubectl
 brew install helm
 ```
-## Dreate the local docker registry
+## Create the local docker registry
 
 ```shell
 reg_name='kind-registry'
@@ -23,7 +23,6 @@ if [ "$(docker inspect -f '{{.State.Running}}' "${reg_name}" 2>/dev/null || true
     -d --restart=always -p "127.0.0.1:${reg_port}:5000" --name "${reg_name}" \
     registry:2
 fi
-
 ```
 
 ## Create the cluster
