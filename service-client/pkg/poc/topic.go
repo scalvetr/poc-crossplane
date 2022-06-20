@@ -7,12 +7,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"time"
 )
 
 type Topic struct {
-	Name       string `json:"name"`
-	Partitions int    `json:"partitions"`
-	Status     string `json:"status,omitempty"`
+	Name         string    `json:"name"`
+	Partitions   int       `json:"partitions"`
+	CreationTime time.Time `json:"creationTime,omitempty"`
 }
 
 type Error struct {

@@ -1,10 +1,10 @@
 package com.example.service.api.service
 
 import com.example.service.api.Topic
-import com.example.service.api.TopicStatus
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.springframework.stereotype.Service
+import java.time.ZonedDateTime
 
 @Service
 class TopicService(
@@ -18,7 +18,7 @@ class TopicService(
         checkTenant(tenant)
         checkTopic(topic)
         checkTopicLimit(tenant)
-        database[tenant]?.put(topic.name, Topic(topic.name, topic.partitions, TopicStatus.CREATED))
+        database[tenant]?.put(topic.name, Topic(topic.name, topic.partitions, ZonedDateTime.now()))
     }
 
     suspend fun updateTopic(tenant: String, topic: Topic) {
@@ -27,7 +27,8 @@ class TopicService(
         if (database[tenant]?.containsKey(topic.name) == false)
             throw NotFoundException("Topic with name ${topic.name} doesn't exist")
 
-        database[tenant]?.put(topic.name, topic)
+        var original = database[tenant]?.get(topic.name)
+        database[tenant]?.put(topic.name, Topic(topic.name, topic.partitions, original?.creationTime))
     }
 
     suspend fun getTopic(tenant: String, topicName: String): Topic {
